@@ -20,7 +20,7 @@
 		</section>
 		<section>
 			<form action="/tv/create" method="POST">
-			Television title:<input type="text" name="titleId" value="<%=show._id%>">
+							<input type="hidden" name="titleId" value="<%=show._id%>">
 			Create a review:<textarea name="body"></textarea><br>
 
 			<button type="submit">Submit</button>

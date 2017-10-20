@@ -5,7 +5,10 @@ const TVReview = require('../models/tvReviews')
 
 router.get('/', (req, res) =>{
 	TV.find((err, shows)=> {
-		res.render('tv/index', {tv: shows})
+		TVReview.find((err, reviews)=>{
+		res.render('tv/index', {tv: shows,
+								tvreviews: reviews})
+	})
 	})
 })
 
@@ -27,35 +30,33 @@ router.get('/:id', (req,res) =>{
 	})
 })
 
-// router.post('/create', (req, res)=>{
-// 	TVReview.create((req.body, (err, newReview) =>{
-// 		TV.findById((req.body.titleId, (err, show)=>{
-// 			show.reviews.push(newReview);
-// 			show.save();
-// 			res.redirect('/tv/')
-// 		})
-// 	})
-// })
 router.post('/create', (req, res)=>{
 	TVReview.create((req.body, (err, newReview)=>{
 		TV.findById((req.body.titleId), (err, currentShow)=>{
 			currentShow.reviews.push(req.body);
 			currentShow.save();
-			res.redirect('/tv/')
+			res.redirect('/tv/' + req.body.titleId)
 		})
 	}))
 })
 
-
-
-
-// router.put('/:id', (req, res) => {
-// 	TV.findByIdAndUpdate(req.params.id, req.body, (err, updatedShow)=>{
-
-		
-// 			res.redirect('/tv/' + req.params.id)
-// 		})      
+router.delete('/:id', (req, res) => {
+	TV.findByIdAndRemove(req.params.id, (err, show) => {
+		const reviewIds = [];
+		for(let i = 0; i < show.reviews.length; i++){
+			reviewIds.push(show.reviews[i].id)
+		}
+		TVReview.remove({
+			_id: {$in: reviewIds}
+		}, (err, data) =>{
+			res.redirect('/tv')
+			})
+		})
+	})
 // })
+
+
+
  
 
 module.exports = router;
