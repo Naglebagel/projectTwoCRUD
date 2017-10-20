@@ -10,14 +10,19 @@
 				<li>Title: <%=show.title%></li>
 				<li>Description: <%=show.description%></li>
 				<h2>Reviews</h2>
-					<%  show.reviews.forEach((review)=>{%>
-						<li><%=review.review%></li>
-						<%})%>
+					<%show.reviews.forEach((reviews)=>{%>
+					<li>
+						<%=reviews.body%>
+					</li>
+
+					<%}) %>
 			</ul>
 		</section>
 		<section>
-			<form action="/tv/<%=show._id%>?_method=PUT" method="POST">
-			Create a review:<textarea name="reviews.review"></textarea><br>
+			<form action="/tv/create" method="POST">
+			Television title:<input type="text" name="titleId" value="<%=show._id%>">
+			Create a review:<textarea name="body"></textarea><br>
+
 			<button type="submit">Submit</button>
 		</form>
 		</section>

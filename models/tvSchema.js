@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
+const TVReview = require('./tvReviews')
 
-const tvSchema = new mongoose.Schema({
+
+const TVSchema = new mongoose.Schema({
 	title: String,
 	imageLink: String,
 	description: String,
-	reviews: [{review:String}]
+	reviews: [TVReview.schema]
 })
 
-module.exports = mongoose.model("TV", tvSchema)
+module.exports = mongoose.model("TV", TVSchema)
 
