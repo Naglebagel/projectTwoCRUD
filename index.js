@@ -20,7 +20,7 @@ app.use(methodOverride('_method'));
 
 
 app.use('/movie', moviesController);
-app.use('/tvshows', tvController);
+app.use('/tv', tvController);
 
 app.use('/', homeController);
 
