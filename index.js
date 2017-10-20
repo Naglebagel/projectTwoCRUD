@@ -21,7 +21,13 @@ app.use('/movie', movieController);
 // app.use('/toWatch', toWatchController);
 app.use('/', homeController);
 
-
+app.use( function( req, res, next ) {
+    if ( req.query._method === 'DELETE' ) {
+        req.method = 'DELETE';
+        req.url = req.path;
+    }
+    next(); 
+});
 
 app.use(express.static('public'));
 

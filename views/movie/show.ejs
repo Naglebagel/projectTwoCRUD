@@ -34,18 +34,23 @@
 	</header>
 
 	<main>
-		<section>
-			<h1><%= movie.title %></h1>
-			<img href="<%= movie.imagelink %>">
-			<p><%= movie.description %></p>
-			<small>by:
-			</small>
-		</section>
-		<section>
-			<form action="/movie/<%= movie._id %>?_method=DELETE" method="POST">
-				<a href="/movie/<%= movie._id %>/edit" >Update</a>
-				<input  type="submit" value="Delete Review">
-			</form>
+		<section class="d-flex justify-content-center">
+      <div class="card" style="width: 25rem;">
+        <img class="card-img-top" name="imagelink" src="<%= movie.imagelink %>" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title" name="title"><%= movie.title %></h4>
+          <p class="card-text" name="description"><%= movie.description %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <div class="card-body">
+          <a href="/movie/<%= movie._id %>/edit" >Update</a><br>
+          <a href="/movie/<%= movie._id %>?_method=DELETE" method="POST">Delete</a>
+        </div>
+      </div>	
 		</section>
 	</main>
 <canvas id="canvas-radial"></canvas>
