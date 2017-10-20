@@ -52,7 +52,7 @@ router.post('/create', (req, res)=>{
 		TV.findById((req.body.titleId), (err, currentShow)=>{
 			currentShow.reviews.push(req.body);
 			currentShow.save();
-			res.redirect('/tvshows/' + req.body.titleId)
+			res.redirect('/tv/' + req.body.titleId)
 		})
 	}))
 })

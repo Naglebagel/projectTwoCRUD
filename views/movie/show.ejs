@@ -57,9 +57,7 @@
             <button type="submit">Submit</button>
         </form>
           <a href="/movie/<%= movie._id %>/edit" >Update</a><br>
-          <form action="/movie/<%=movie._id%>?_method=DELETE" method="POST">
-            <button type="submit">Delete</button>
-          </form>
+          <a href="/movie/<%= movie._id %>?_method=DELETE">Delete</a><br>
         </div>
       </div>	
 		</section>

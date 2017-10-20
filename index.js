@@ -18,12 +18,6 @@ app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 
-
-app.use('/movie', moviesController);
-app.use('/tv', tvController);
-
-app.use('/', homeController);
-
 app.use( function( req, res, next ) {
     if ( req.query._method === 'DELETE' ) {
         req.method = 'DELETE';
@@ -34,6 +28,11 @@ app.use( function( req, res, next ) {
 
 app.use(express.static('public'));
 
+
+app.use('/movie', moviesController);
+app.use('/tv', tvController);
+
+app.use('/', homeController);
 
 app.listen(3000, () => {
 	console.log('listening on port 3000');

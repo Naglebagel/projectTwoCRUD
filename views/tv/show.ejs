@@ -50,15 +50,14 @@
           <% })%>
         </ul>
         <div class="card-body">
-          <form action="/movie/create" method="POST">
+          <form action="/tv/create" method="POST">
                             <input type="hidden" name="titleId" value="<%=show._id%>">
             Create a review:<textarea name="body"></textarea><br>
 
             <button type="submit">Submit</button>
         </form>
           <a href="/tv/<%= show._id %>/edit" >Update</a><br>
-          <form action="/tv/<%=show._id%>?_method=DELETE" method="POST">
-            <button type="submit">Delete</button>
+          <a href="/tv/<%= show._id %>?_method=DELETE"" >Delete</a><br>
           </form>
         </div>
       </div>	
