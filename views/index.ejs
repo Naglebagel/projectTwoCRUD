@@ -5,15 +5,21 @@
 </head>
 <body>
 	<h1>This is the index Page</h1>
-		<ul>
-			<% user.forEach((user) => { %>
+<a href="/tv">REVIEW TV SHOWS</a>
+<a href="/movies">REVIEW MOVIES</a>
 
-		
-			<li>
-				<%= user.username  %>
-			</li>
+	<h1>This is the list of Registered Users</h1>
+	 	<ul>
+	 		<%users.forEach((registeredUser) =>{%>
+				<li><%=registeredUser.user%></li>
+		<% })%>
+			
 
-			<% }) %>
-		</ul>
+	<form action="/login" method="POST">
+		Username:<input type="text" name="user">
+		Password:<input type="password" name="password">
+		<button>Login</button>
+	</form>
+
 </body>
 </html>

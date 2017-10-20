@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+		<section>
+			<h2><%=show.title%>:</h2>
+			<ul>
+				<li>Title: <%=show.title%></li>
+				<li>Description: <%=show.description%></li>
+				<h2>Reviews</h2>
+					<%  show.reviews.forEach((review)=>{%>
+						<li><%=review.review%></li>
+						<%})%>
+			</ul>
+		</section>
+		<section>
+			<form action="/tv/<%=show._id%>?_method=PUT" method="POST">
+			Create a review:<textarea name="reviews.review"></textarea><br>
+			<button type="submit">Submit</button>
+		</form>
+		</section>
+		<section>
+			<form action="/tv/<%=show._id%>?_method=DELETE" method="POST">
+				<input type="submit" value="Delete Show">
+			</form>
+		</section>
+</body>
+</html>
