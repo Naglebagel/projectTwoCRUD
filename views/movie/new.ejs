@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../movie/partials/head.ejs %>	
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<h1>New Movie Review</h1>
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="/movie">All Movie Reviews</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+<main>
+	<h2>Add your stuff</h2>
+	<form action="/movie" method="POST">
+		<input type="text" name="title"><br>
+		<input type="text" name="imagelink"><br>
+		<textarea name="description"></textarea><br>
+	<!-- 	<input type="text" name="">
+		<input type="text" name="">
+		<input type="text" name=""> -->
+		<button type="submit">Submit</button>
+	</form>
+</main>
+
+<canvas id="canvas-radial"></canvas>
+
+
+<script src="/javascripts/app.js"></script>
+
+</body>
+</html>

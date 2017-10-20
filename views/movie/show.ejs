@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../movie/partials/head.ejs %>
+</head>
+<body>
+
+	<header>
+		<nav>
+			<ul>
+				<h1>Show Page for <%= movie.title %></h1>
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="/movie">All Movie Reviews</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section>
+			<h1><%= movie.title %></h1>
+			<img href="<%= movie.imagelink %>">
+			<p><%= movie.description %></p>
+			<small>by:
+			</small>
+		</section>
+		<section>
+			<form action="/movie/<%= movie._id %>?_method=DELETE" method="POST">
+				<a href="/movie/<%= movie._id %>/edit" >Update</a>
+				<input  type="submit" value="Delete Review">
+			</form>
+		</section>
+	</main>
+<canvas id="canvas-radial"></canvas>
+
+
+<script src="/javascripts/app.js"></script>
+
+</body>
+</html>

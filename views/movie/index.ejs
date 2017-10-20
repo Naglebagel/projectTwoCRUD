@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <% include ../movie/partials/head.ejs %>
+</head>
+<body>
+<div>
+	<header>
+		<h1>Movies</h1>
+		<nav>
+			<ul>
+				<h2>Text</h2>
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="">Tv Reviews</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<h3><a href="/movie/new">Add a Movie Review</a></h3>
+
+		<ul>
+			<% movie.forEach((movie) => { %>
+			<li>
+				<a href="/movie/<%= movie._id%>"><%= movie.title %></a>
+			</li>
+			<% }) %>
+		</ul>
+	</main>
+</div>
+<canvas id="canvas-radial"></canvas>
+
+
+<script src="/javascripts/app.js"></script>
+</body>
+</html>

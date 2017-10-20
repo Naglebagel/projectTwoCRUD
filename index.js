@@ -6,9 +6,9 @@ const methodOverride = require('method-override');
 
 require('./db/db');
 
-const watchedController = require('./controllers/watched');
+const movieController = require('./controllers/movie');
 const homeController = require('./controllers/home');
-const toWatchController = require('./controllers/toWatch');
+const tvController = require('./controllers/tv');
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -17,9 +17,10 @@ app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 
-app.use('/watched', watchedController);
-app.use('/toWatch', toWatchController);
+app.use('/movie', movieController);
+// app.use('/toWatch', toWatchController);
 app.use('/', homeController);
+
 
 
 app.use(express.static('public'));
