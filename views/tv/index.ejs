@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>This is the tv show page</h1>
+				<ul>
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a href="/movies/">Look at movies</a>
+				</li>
+					<li>
+					<a href="/tvshows/new">Create a New Show</a>
+				</li>
+			</ul>
+
+	<main>
+	<h2>List of TV Shows</h2>
+	<ul>
+		<%tv.forEach((show) =>{%>
+			<li>
+				<a href="/tvshows/<%=show._id%>"><%=show.title%></a>
+				<img src="<%=show.imageLink%>" style="width: 300px, height:300px"> 
+			</li>
+		<% })%>
+	</main>
+	<h2>List of Reviews</h2>
+			<%tvreviews.forEach((review) =>{%>
+			<li>
+				<%=review.body%>
+			</li>
+		<% })%>
+</body>
+</html>
