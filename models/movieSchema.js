@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
+const MovieReview = require('./movieReviews')
 
 const movieSchema = new mongoose.Schema({
+
 	title: String,
 	imageLink: String,
 	description: String,
-	reviews: [{	name: String,
-				review: String,
-				date: Date
-			}]
+	reviews: [MovieReview.schema]
+
 })
 
 module.exports = mongoose.model("Movie", movieSchema)
