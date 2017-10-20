@@ -34,15 +34,20 @@
 	</header>
 
 	<main>
-		<h3><a href="/movie/new">Add a Movie Review</a></h3>
-
-		<ul>
-			<% movie.forEach((movie) => { %>
-			<li>
-				<a href="/movie/<%= movie._id%>"><%= movie.title %></a>
-			</li>
-			<% }) %>
-		</ul>
+    <section class="d-flex justify-content-center">
+      <div class="card" style="width: 25rem;">
+        <div class="card-header">
+          <a href="/movie/new">Add a Movie Review</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <% movie.forEach((movie) => { %>
+            <li class="list-group-item">
+              <a href="/movie/<%= movie._id%>"><%= movie.title %></a>
+            </li>
+            <% }) %>
+        </ul>
+      </div>
+    </section>
 	</main>
 </div>
 <canvas id="canvas-radial"></canvas>

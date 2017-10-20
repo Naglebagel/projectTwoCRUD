@@ -1,3 +1,5 @@
+@color: maroon;
+
 html, body{
 	z-index: 1;
 }
@@ -10,7 +12,11 @@ ul{
 }
 
 a{
-	text-decoration: none;
+    color: @color;
+}
+
+a:link{
+	text-decoration: none!important;
 }
 
 .card{
