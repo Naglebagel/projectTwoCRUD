@@ -5,17 +5,31 @@
 </head>
 <body>
 	<header>
-		<nav>
-			<ul>
-				<h1>Update Movie Review</h1>
-				<li>
-					<a href="/">Home</a>
-				</li>
-				<li>
-					<a href="/movie">All Movie Reviews</a>
-				</li>
-			</ul>
-		</nav>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Update Movie Review</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/movie">Movie Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tv">TV Reviews</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/account">Create Account</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 	</header>
 
 
@@ -23,6 +37,7 @@
 	<input type="text" name="title" value="<%= movie.title %>"><br>
 	<input type="text" name="imagelink" value="<%= movie.imagelink %>"><br>
 	<textarea name="description"> <%= movie.description %></textarea><br>
+	<textarea name="review"> <%= movie.review %></textarea><br>
 	<button type="submit">Submit</button>
 </form>
 

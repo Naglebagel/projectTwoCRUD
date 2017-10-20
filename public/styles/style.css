@@ -22,3 +22,9 @@ a {
   left: 0;
   z-index: -100;
 }
+#jumboHome {
+  background-color: grey;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+}

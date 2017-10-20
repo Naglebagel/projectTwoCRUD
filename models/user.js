@@ -4,8 +4,7 @@ const User = require('./user');
 
 const userSchema = new mongoose.Schema({
 	username: String,
-	password: String,
-	reviews: {[movieSchema], [tvSchema]}
+	password: String
 })
 
 module.exports = mongoose.model('User', userSchema);
