@@ -6,7 +6,7 @@ const TVReview = require('../models/tvReviews')
 router.get('/', (req, res) =>{
 	TV.find((err, shows)=> {
 		TVReview.find((err, reviews)=>{
-		res.render('tvshows/index', {tv: shows,
+		res.render('tv/index', {tv: shows,
 								tvreviews: reviews})
 	})
 	})
@@ -18,12 +18,12 @@ router.post('/', (req,res) =>{
 		})
 	})
 router.get('/new', (req, res) =>{
-	res.render('tvshows/new', {});
+	res.render('tv/new', {});
 })
 
 router.get('/:id', (req,res) =>{
 	TV.findById((req.params.id), (err, show)=>{
-			res.render('tvshows/show', {
+			res.render('tv/show', {
 										show: show,
 										TVReview
 		})
