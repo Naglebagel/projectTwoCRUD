@@ -6,7 +6,7 @@ const TVReview = require('../models/tvReviews')
 router.get('/', (req, res) =>{
 	TV.find((err, shows)=> {
 		TVReview.find((err, reviews)=>{
-		res.render('tv/index', {tv: shows,
+		res.render('tvshows/index', {tv: shows,
 								tvreviews: reviews})
 	})
 	})
@@ -18,12 +18,12 @@ router.post('/', (req,res) =>{
 		})
 	})
 router.get('/new', (req, res) =>{
-	res.render('tv/new', {});
+	res.render('tvshows/new', {});
 })
 
 router.get('/:id', (req,res) =>{
 	TV.findById((req.params.id), (err, show)=>{
-			res.render('tv/show', {
+			res.render('tvshows/show', {
 										show: show,
 										TVReview
 		})
@@ -35,7 +35,7 @@ router.post('/create', (req, res)=>{
 		TV.findById((req.body.titleId), (err, currentShow)=>{
 			currentShow.reviews.push(req.body);
 			currentShow.save();
-			res.redirect('/tv/' + req.body.titleId)
+			res.redirect('/tvshows/' + req.body.titleId)
 		})
 	}))
 })
@@ -49,7 +49,7 @@ router.delete('/:id', (req, res) => {
 		TVReview.remove({
 			_id: {$in: reviewIds}
 		}, (err, data) =>{
-			res.redirect('/tv')
+			res.redirect('/tvshows')
 			})
 		})
 	})

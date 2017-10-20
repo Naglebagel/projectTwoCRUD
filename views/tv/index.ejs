@@ -13,7 +13,7 @@
 					<a href="/movies/">Look at movies</a>
 				</li>
 					<li>
-					<a href="/tv/new">Create a New Show</a>
+					<a href="/tvshows/new">Create a New Show</a>
 				</li>
 			</ul>
 
@@ -22,7 +22,7 @@
 	<ul>
 		<%tv.forEach((show) =>{%>
 			<li>
-				<a href="/tv/<%=show._id%>"><%=show.title%></a>
+				<a href="/tvshows/<%=show._id%>"><%=show.title%></a>
 				<img src="<%=show.imageLink%>" style="width: 300px, height:300px"> 
 			</li>
 		<% })%>

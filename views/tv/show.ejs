@@ -19,7 +19,7 @@
 			</ul>
 		</section>
 		<section>
-			<form action="/tv/create" method="POST">
+			<form action="/tvshows/create" method="POST">
 							<input type="hidden" name="titleId" value="<%=show._id%>">
 			Create a review:<textarea name="body"></textarea><br>
 
@@ -27,7 +27,7 @@
 		</form>
 		</section>
 		<section>
-			<form action="/tv/<%=show._id%>?_method=DELETE" method="POST">
+			<form action="/tvshows/<%=show._id%>?_method=DELETE" method="POST">
 				<input type="submit" value="Delete Show">
 			</form>
 		</section>

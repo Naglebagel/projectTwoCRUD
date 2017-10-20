@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 
 app.use('/movies', moviesController);
-app.use('/tv', tvController);
+app.use('/tvshows', tvController);
 app.use('/', homeController);
 
 
