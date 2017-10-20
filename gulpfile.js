@@ -11,9 +11,9 @@ gulp.task('someTask', () =>{
 
 gulp.task('less-css', () =>{
 
-	gulp.src('./public/css/style.less')
+	gulp.src('./public/styles/style.less')
 		.pipe(less())
-		.pipe(gulp.dest('./public/css/'))
+		.pipe(gulp.dest('./public/styles/'))
 
 
 });
@@ -21,7 +21,7 @@ gulp.task('less-css', () =>{
 
 gulp.task('watch', () => {
 
-	gulp.watch(['./public/css/*.less'], ['less-css'] )
+	gulp.watch(['./public/styles/*.less'], ['less-css'] )
 
 });
 
