@@ -38,14 +38,27 @@
       <div class="card border-dark bg-secondary" style="width: 25rem;">
         <img class="card-img-top" name="imageLink" src="<%= show.imageLink %>" alt="Card image cap">
         <div class="card-body">
-          <h4 class="card-title" name="title"><%= show.title %></h4>
+          <h4 class="card-title" name="title">
+    <%       let totalRatings = 0;%>
+    <%   for (let i=0; i < show.reviews.length; i++) {%>
+    <%    totalRatings += show.reviews[i].rating%>
+    <%   }%>
+    <% let averageRating =Math.round(totalRatings/ show.reviews.length*10)/10%>
+     <%=averageRating%><br>
+
+
+
+
+
+            <%= show.title %></h4>
           <p class="card-text" name="description"><%= show.description %></p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Reviews</li>
           <%show.reviews.forEach((reviews)=>{%>
           <li class="list-group-item">
-            <%=reviews.body%>
+            Rating:<%=reviews.rating%><br>
+            <%=reviews.body%>  
           </li>
           <% })%>
         </ul>
@@ -53,6 +66,7 @@
           <form action="/tv/create" method="POST">
                             <input type="hidden" name="titleId" value="<%=show._id%>">
             Create a review:<textarea name="body"></textarea><br>
+                            <input type="number" name="rating" max='10' min='1'>
 
             <button type="submit">Submit</button>
         </form>
