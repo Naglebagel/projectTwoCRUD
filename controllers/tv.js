@@ -3,6 +3,8 @@ const router = express.Router();
 const TV = require('../models/tvSchema')
 const TVReview = require('../models/tvReviews')
 
+
+
 router.get('/', (req, res) =>{
 	TV.find((err, shows)=> {
 		TVReview.find((err, reviews)=>{
@@ -27,6 +29,14 @@ router.get('/:id', (req,res) =>{
 										show: show,
 										TVReview
 		})
+// 			let totalRatings = 0;
+// 			for (let i=0; i < show.reviews.length; i++) {
+//         totalRatings += show.reviews[i].rating
+        
+        
+// }
+//  const averageRating = totalRatings/ show.reviews.length
+// console.log(averageRating)
 	})
 })
 
@@ -52,7 +62,7 @@ router.post('/create', (req, res)=>{
 		TV.findById((req.body.titleId), (err, currentShow)=>{
 			currentShow.reviews.push(req.body);
 			currentShow.save();
-			res.redirect('/tvshows/' + req.body.titleId)
+			res.redirect('/tv/' + req.body.titleId)
 		})
 	}))
 })
