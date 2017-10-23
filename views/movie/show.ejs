@@ -38,7 +38,18 @@
       <div class="card border-dark bg-secondary" style="width: 25rem;">
         <img class="card-img-top" name="imageLink" src="<%= movie.imageLink %>" alt="Card image cap">
         <div class="card-body">
-          <h4 class="card-title" name="title"><%= movie.title %></h4>
+          <h4 class="card-title" name="title">
+                <%       let totalRatings = 0;%>
+    <%   for (let i=0; i < movie.reviews.length; i++) {%>
+    <%    totalRatings += movie.reviews[i].rating%>
+    <%   }%>
+    <% let averageRating =Math.round(totalRatings/ movie.reviews.length*10)/10%>
+     <%=averageRating%><br>
+
+
+
+
+            <%= movie.title %></h4>
           <p class="card-text" name="description"><%= movie.description %></p>
         </div>
         <ul class="list-group list-group-flush">
@@ -53,6 +64,7 @@
           <form action="/movie/create" method="POST">
                             <input type="hidden" name="titleId" value="<%=movie._id%>">
             Create a review:<textarea name="body"></textarea><br>
+                            <input type="number" name="rating" max='10' min='1'>
 
             <button type="submit">Submit</button>
         </form>
