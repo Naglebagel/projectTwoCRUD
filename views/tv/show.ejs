@@ -1,35 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<% include ../tv/partials/head.ejs %>
 </head>
 <body>
-		<section>
-			<h2><%=show.title%>:</h2>
-			<ul>
-				<li>Title: <%=show.title%></li>
-				<li>Description: <%=show.description%></li>
-				<h2>Reviews</h2>
-					<%show.reviews.forEach((reviews)=>{%>
-					<li>
-						<%=reviews.body%>
-					</li>
 
-					<%}) %>
-			</ul>
-		</section>
-		<section>
-			<form action="/tvshows/create" method="POST">
-							<input type="hidden" name="titleId" value="<%=show._id%>">
-			Create a review:<textarea name="body"></textarea><br>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Review for <%= show.title%></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/movie">Movie Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tv">TV Reviews</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/account">Create Account</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+	</header>
 
-			<button type="submit">Submit</button>
-		</form>
+	<main>
+		<section class="d-flex justify-content-center">
+      <div class="card border-dark bg-secondary" style="width: 25rem;">
+        <img class="card-img-top" name="imageLink" src="<%= show.imageLink %>" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title" name="title"><%= show.title %></h4>
+          <p class="card-text" name="description"><%= show.description %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Reviews</li>
+          <%show.reviews.forEach((reviews)=>{%>
+          <li class="list-group-item">
+            <%=reviews.body%>
+          </li>
+          <% })%>
+        </ul>
+        <div class="card-body">
+          <form action="/tv/create" method="POST">
+                            <input type="hidden" name="titleId" value="<%=show._id%>">
+            Create a review:<textarea name="body"></textarea><br>
+
+            <button type="submit">Submit</button>
+        </form>
+          <a href="/tv/<%= show._id %>/edit" >Update</a><br>
+          <a href="/tv/<%= show._id %>?_method=DELETE"" >Delete</a><br>
+          </form>
+        </div>
+      </div>	
 		</section>
-		<section>
-			<form action="/tvshows/<%=show._id%>?_method=DELETE" method="POST">
-				<input type="submit" value="Delete Show">
-			</form>
-		</section>
+	</main>
+<canvas id="canvas-radial"></canvas>
+
+
+<script src="/javascripts/app.js"></script>
+
 </body>
 </html>

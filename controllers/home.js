@@ -1,37 +1,83 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user')
+const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
 router.get('/', (req, res) => {
 
-	User.find((err, registeredUser)=>{
-	res.render('index', {users: registeredUser});
+	res.render('index', {});
 
-})
+}) //end of homepage get route	
 
 router.get('/login', (req, res) => {
-	res.render('login', {});
-})
+	res.render('login', {message: '', logged: req.session.logged});
+}) // end of login get route
 
 router.get('/account', (req, res) => {
-	res.render('newaccount', {});
-})
+	res.render('newaccount', {message: ''});
+}) // end of account get route
 
 router.post('/account', (req, res) => {
-	User.create(req.body, (err, user) => {
-		res.redirect('/login')
-		console.log(user);
-		console.log(req.body);
+
+	User.findOne({username: req.body.username}, (err, user) => {
+		if(err){
+			res.send(err)
+		} else{
+			if(!user){
+				const password = req.body.password;
+				const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+
+				const userDBentry = {};
+				userDBentry.username = req.body.username;
+				userDBentry.password = passwordHash;
+
+				User.create(userDBentry, (err, user) => {
+					if(err){
+						res.send('error creating user')
+					} else{
+						req.session.logged = true;
+						req.session.username = user.username;
+						res.redirect('/login');
+					}
+				})
+
+			} else {
+				res.render('newaccount', {message: 'username taken'})
+			}
+		}
 	})
 
-})
-})
+}) // end of account post route
+
 router.post('/login', (req, res) =>{
-	User.create(req.body, (err, User)=>{
-	res.redirect('/')
 
-	})
-})
+	User.findOne({username: req.body.username}, (err, user) => {
+    if(err){
+      res.send(err)
+    } else {
+      console.log(user)
+            if(user){
+
+                    if(bcrypt.compareSync(req.body.password, user.password)){
+                      req.session.logged = true;
+                      req.session.username = user.username;
+                      res.redirect('/login')
+                    } else {
+                      res.render('login', {message: 'login incorrect'})
+                    }
+
+            } else {
+              res.render('login', {message: 'Login was incorrect'})
+            }
+   		}
+   	})
+}) // end of login post route
+
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+});
+
 
 
 

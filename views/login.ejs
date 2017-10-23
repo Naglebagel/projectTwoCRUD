@@ -35,14 +35,22 @@
 	<main>
 		<section>
       <div class="container">
+       <% if (!logged) { %>
 			<form class="form-signin" action="/login" method="post">
-        <h2 class="form-signin-heading">Sign in to do Stuff</h2>
+        <h2 class="form-signin-heading">Login</h2>
         <label for="username" class="sr-only">Username</label>
 				<input placeholder="Username" class="form-control" id="username" type="text" name="username" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
 				<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 				<button class="btn btn-lg btn-dark btn-block type" type="submit">Login</button>
 			</form>
+     <% } %>
+
+    <% if (logged) { %>
+      <h2>You are currently logged in</h2>
+      <a href="/logout">Logout</a>
+    <% } %>
+
       </div>
 		</section>
 	</main>

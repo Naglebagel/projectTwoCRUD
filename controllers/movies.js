@@ -23,7 +23,6 @@ router.get('/new', (req, res) =>{
 
 router.get('/:id', (req,res) =>{
 	Movie.findById((req.params.id), (err, movie)=>{
-		// console.log(movie.imageLink);
 			res.render('movie/show', {
 										movie: movie,
 										MovieReview
