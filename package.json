@@ -17,13 +17,15 @@
   },
   "homepage": "https://github.com/Naglebagel/projectTwoCRUD#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "granim": "^1.0.6",
     "method-override": "^2.3.10",
-    "mongoose": "^4.12.3"
+    "mongoose": "^4.12.3",
+    "parseurl": "^1.3.2"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

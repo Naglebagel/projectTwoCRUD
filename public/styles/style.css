@@ -1,9 +1,13 @@
 html,
 body {
   z-index: 1;
+  font-family: 'Cuprum', sans-serif;
 }
 body {
   text-align: center;
+}
+nav {
+  font-family: 'Bree Serif', serif;
 }
 ul {
   list-style-type: none;
@@ -15,10 +19,13 @@ a:link {
   text-decoration: none!important;
 }
 .card {
-  background-color: grey;
+  margin-top: 10px;
+}
+.display-3 {
+  font-family: 'Bree Serif', serif;
 }
 .list-group-item {
-  background-color: grey;
+  background-color: #868e96;
 }
 #canvas-radial {
   position: absolute;
