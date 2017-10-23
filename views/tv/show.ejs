@@ -44,13 +44,12 @@
     <%    totalRatings += show.reviews[i].rating%>
     <%   }%>
     <% let averageRating =Math.round(totalRatings/ show.reviews.length*10)/10%>
-     <%=averageRating%><br>
-
-
-
-
-
-            <%= show.title %></h4>
+    <% if(isNaN(averageRating)){%>
+          <%=averageRating = "No Reviews Yet"%><br>
+    <% }else{%>
+        <%=averageRating%><br>
+    <% }%>
+          <%= show.title %></h4>
           <p class="card-text" name="description"><%= show.description %></p>
         </div>
         <ul class="list-group list-group-flush">
@@ -68,8 +67,7 @@
                             <input type="hidden" name="titleId" value="<%=show._id%>">
             Create a review:<textarea name="body"></textarea><br>
                             <input type="number" name="rating" max='10' min='1'>
-
-            <button type="submit">Submit</button>
+                            <button type="submit">Submit</button>
         </form>
           <a href="/tv/<%= show._id %>/edit" >Update</a><br>
           <a href="/tv/<%= show._id %>?_method=DELETE"" >Delete</a><br>
