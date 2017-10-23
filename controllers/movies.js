@@ -7,7 +7,9 @@ router.get('/', (req, res) =>{
 	Movie.find((err, movies)=> {
 		MovieReview.find((err, reviews)=>{
 		res.render('movie/index', {movie: movies,
-								moviereviews: reviews})
+								moviereviews: reviews,
+								logged: req.session.logged
+									})
 	})
 	})
 })
@@ -18,22 +20,31 @@ router.post('/', (req,res) =>{
 		})
 	})
 router.get('/new', (req, res) =>{
-	res.render('movie/new', {});
+	if (req.session.logged === true) {
+		res.render('movie/new', {});
+	} else {
+		res.redirect('/login')
+	}
 })
 
 router.get('/:id', (req,res) =>{
 	Movie.findById((req.params.id), (err, movie)=>{
 			res.render('movie/show', {
 										movie: movie,
-										MovieReview
-		})
+										MovieReview,
+										logged: req.session.logged
+										})
 	})
 })
 
 router.get('/:id/edit', (req, res) => {
-	Movie.findById(req.params.id, (err, movie) => {
+	if (req.session.logged === true){
+		Movie.findById(req.params.id, (err, movie) => {
 		res.render('movie/edit', {movie: movie})
-	})
+		})
+	} else {
+		res.redirect('/login')
+	}
 })
 
 router.put('/:id/edit', (req, res) => {
@@ -58,7 +69,8 @@ router.post('/create', (req, res)=>{
 })
 
 router.delete('/:id', (req, res) => {
-	Movie.findByIdAndRemove(req.params.id, (err, movie) => {
+	if (req.session.logged === true) {
+		Movie.findByIdAndRemove(req.params.id, (err, movie) => {
 		const reviewIds = [];
 		for(let i = 0; i < movie.reviews.length; i++){
 			reviewIds.push(movie.reviews[i].id)
@@ -70,5 +82,8 @@ router.delete('/:id', (req, res) => {
 
 			})
 		})
+	} else {
+		res.redirect('/login')
+	}	
 })
 module.exports = router;

@@ -27,30 +27,6 @@ app.use(session({
 	saveUninitialized: false
 }))
 
-app.use(function(req, res, next){
-	if(parseUrl(req).pathname.includes('movie')){
-		if(req.session.logged === true){
-			next();
-		} else {
-		res.redirect('/account');
-		}
-	} else{
-		next();
-	}	
-});
-
-app.use(function(req, res, next){
-	if(parseUrl(req).pathname.includes('tv')){
-		if(req.session.logged === true){
-			next();
-		} else {
-		res.redirect('/account');
-		}
-	} else{
-		next();
-	}	
-});
-
 app.use( function( req, res, next ) {
     if ( req.query._method === 'DELETE' ) {
         req.method = 'DELETE';

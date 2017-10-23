@@ -61,6 +61,7 @@
           <% })%>
         </ul>
         <div class="card-body">
+          <% if (logged) { %>
           <form action="/movie/create" method="POST">
                             <input type="hidden" name="titleId" value="<%=movie._id%>">
             Create a review:<textarea name="body"></textarea><br>
@@ -70,6 +71,7 @@
         </form>
           <a href="/movie/<%= movie._id %>/edit" >Update</a><br>
           <a href="/movie/<%= movie._id %>?_method=DELETE">Delete</a><br>
+          <% } %>
         </div>
       </div>	
 		</section>

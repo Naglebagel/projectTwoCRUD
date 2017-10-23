@@ -9,7 +9,9 @@ router.get('/', (req, res) =>{
 	TV.find((err, shows)=> {
 		TVReview.find((err, reviews)=>{
 		res.render('tv/index', {tv: shows,
-								tvreviews: reviews})
+								tvreviews: reviews,
+								logged: req.session.logged
+									})
 	})
 	})
 })
@@ -20,14 +22,19 @@ router.post('/', (req,res) =>{
 		})
 	})
 router.get('/new', (req, res) =>{
-	res.render('tv/new', {});
+	if (req.session.logged === true){
+		res.render('tv/new', {});
+	} else{
+		res.redirect('/login')
+	}
 })
 
 router.get('/:id', (req,res) =>{
 	TV.findById((req.params.id), (err, show)=>{
 			res.render('tv/show', {
 										show: show,
-										TVReview
+										TVReview,
+										logged: req.session.logged
 		})
 // 			let totalRatings = 0;
 // 			for (let i=0; i < show.reviews.length; i++) {
@@ -41,9 +48,13 @@ router.get('/:id', (req,res) =>{
 })
 
 router.get('/:id/edit', (req, res) => {
-	TV.findById(req.params.id, (err, show) => {
+	if (req.session.logged === true) {
+		TV.findById(req.params.id, (err, show) => {
 		res.render('tv/edit', {show: show})
-	})
+		})
+	} else{
+		res.redirect('/login')
+	}
 })
 
 router.put('/:id/edit', (req, res) => {
@@ -68,7 +79,8 @@ router.post('/create', (req, res)=>{
 })
 
 router.delete('/:id', (req, res) => {
-	TV.findByIdAndRemove(req.params.id, (err, show) => {
+	if (req.session.logged === true){
+		TV.findByIdAndRemove(req.params.id, (err, show) => {
 		const reviewIds = [];
 		for(let i = 0; i < show.reviews.length; i++){
 			reviewIds.push(show.reviews[i].id)
@@ -79,6 +91,10 @@ router.delete('/:id', (req, res) => {
 			res.redirect('/tv')
 			})
 		})
+	}else{
+		res.redirect('/login')
+	}
+	
 	})
 // })
 

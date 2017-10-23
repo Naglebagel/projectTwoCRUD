@@ -37,7 +37,12 @@
     <section class="d-flex justify-content-center">
       <div class="card border-dark bg-secondary" style="width: 25rem;">
         <div class="card-header">
+          <% if (!logged) { %>
+          <h1>TV Reviews</h1>
+          <% }  %>
+          <% if (logged) { %>
           <a href="/tv/new">Add a TV Review</a>
+          <% } %>
         </div>
         <ul class="list-group list-group-flush">
           <% tv.forEach((shows) => { %>

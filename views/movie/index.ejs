@@ -37,7 +37,12 @@
     <section class="d-flex justify-content-center">
       <div class="card border-dark bg-secondary" style="width: 25rem;">
         <div class="card-header">
+          <%if (!logged) { %>
+            <h1>Movie Reviews</h1>
+          <% } %>
+          <%if (logged) { %>
           <a href="/movie/new">Add a Movie Review</a>
+          <% } %>
         </div>
         <ul class="list-group list-group-flush">
           <% movie.forEach((movie) => { %>

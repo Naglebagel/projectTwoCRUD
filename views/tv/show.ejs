@@ -63,6 +63,7 @@
           <% })%>
         </ul>
         <div class="card-body">
+          <% if (logged) { %>
           <form action="/tv/create" method="POST">
                             <input type="hidden" name="titleId" value="<%=show._id%>">
             Create a review:<textarea name="body"></textarea><br>
@@ -72,7 +73,7 @@
         </form>
           <a href="/tv/<%= show._id %>/edit" >Update</a><br>
           <a href="/tv/<%= show._id %>?_method=DELETE"" >Delete</a><br>
-          </form>
+          <% } %>
         </div>
       </div>	
 		</section>
