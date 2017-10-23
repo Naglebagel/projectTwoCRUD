@@ -35,7 +35,7 @@
 
 	<main>
 		<section class="d-flex justify-content-center">
-      <div class="card" style="width: 25rem;">
+      <div class="card border-dark bg-secondary" style="width: 25rem;">
         <img class="card-img-top" name="imageLink" src="<%= movie.imageLink %>" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title" name="title"><%= movie.title %></h4>
@@ -57,9 +57,7 @@
             <button type="submit">Submit</button>
         </form>
           <a href="/movie/<%= movie._id %>/edit" >Update</a><br>
-          <form action="/movie/<%=movie._id%>?_method=DELETE" method="POST">
-            <button type="submit">Delete</button>
-          </form>
+          <a href="/movie/<%= movie._id %>?_method=DELETE">Delete</a><br>
         </div>
       </div>	
 		</section>

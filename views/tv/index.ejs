@@ -34,15 +34,20 @@
 	</header>
 
 	<main>
-		<h3><a href="/tv/new">Add a TV Review</a></h3>
-
-		<ul>
-			<% tv.forEach((shows) => { %>
-			<li>
-				<a href="/tv/<%= shows._id%>"><%= shows.title %></a>
-			</li>
-			<% }) %>
-		</ul>
+    <section class="d-flex justify-content-center">
+      <div class="card border-dark bg-secondary" style="width: 25rem;">
+        <div class="card-header">
+          <a href="/tv/new">Add a TV Review</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <% tv.forEach((shows) => { %>
+            <li class="list-group-item">
+              <a href="/tv/<%= shows._id%>"><%= shows.title %></a>
+            </li>
+            <% }) %>
+        </ul>
+      </div>
+    </section>
 	</main>
 </div>
 <canvas id="canvas-radial"></canvas>

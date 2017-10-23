@@ -1,8 +1,15 @@
+@color: maroon;
+
 html, body{
 	z-index: 1;
+    font-family: 'Cuprum', sans-serif;
 }
 body{
 	text-align: center;
+}
+
+nav{
+    font-family: 'Bree Serif', serif;
 }
 
 ul{
@@ -10,7 +17,23 @@ ul{
 }
 
 a{
-	text-decoration: none;
+    color: @color;
+}
+
+a:link{
+	text-decoration: none!important;
+}
+
+.card{
+    margin-top: 10px;
+}
+
+.display-3{
+   font-family: 'Bree Serif', serif; 
+}
+
+.list-group-item{
+    background-color: #868e96;
 }
 
 #canvas-radial {
@@ -31,3 +54,6 @@ a{
 	margin-right: 20px;
 	margin-top: 20px; 
 }
+
+
+

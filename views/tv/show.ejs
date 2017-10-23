@@ -35,7 +35,7 @@
 
 	<main>
 		<section class="d-flex justify-content-center">
-      <div class="card" style="width: 25rem;">
+      <div class="card border-dark bg-secondary" style="width: 25rem;">
         <img class="card-img-top" name="imageLink" src="<%= show.imageLink %>" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title" name="title">
@@ -71,8 +71,7 @@
             <button type="submit">Submit</button>
         </form>
           <a href="/tv/<%= show._id %>/edit" >Update</a><br>
-          <form action="/tv/<%=show._id%>?_method=DELETE" method="POST">
-            <button type="submit">Delete</button>
+          <a href="/tv/<%= show._id %>?_method=DELETE"" >Delete</a><br>
           </form>
         </div>
       </div>	
