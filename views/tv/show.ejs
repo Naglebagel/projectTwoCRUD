@@ -43,10 +43,12 @@
     <%   for (let i=0; i < show.reviews.length; i++) {%>
     <%    totalRatings += show.reviews[i].rating%>
     <%   }%>
-    <% let averageRating =Math.round(totalRatings/ show.reviews.length*100)/10%>
+    <% let starRating = Math.round(totalRatings/ show.reviews.length*5)/5%>
+    <% let averageRating = Math.round((totalRatings/ show.reviews.length*2)*100)/10%>
     <% if(isNaN(averageRating)){%>
           <%=averageRating = "No Reviews Yet"%><br>
     <% }else{%>
+          <%=starRating%>/5<br>
           <div class="star-ratings-sprite"><span style="width:<%=averageRating%>%" class="star-ratings-sprite-rating"></span></div><br>
     <% }%>
           <%= show.title %></h4>
