@@ -29,6 +29,10 @@ a:link {
 .list-group-item {
   background-color: #868e96;
 }
+.icon:hover {
+  -webkit-animation: jello 2s;
+  animation: jello 2s;
+}
 #canvas-radial {
   position: fixed;
   display: block;
