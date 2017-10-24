@@ -43,11 +43,11 @@
     <%   for (let i=0; i < show.reviews.length; i++) {%>
     <%    totalRatings += show.reviews[i].rating%>
     <%   }%>
-    <% let averageRating =Math.round(totalRatings/ show.reviews.length*10)/10%>
+    <% let averageRating =Math.round(totalRatings/ show.reviews.length*100)/10%>
     <% if(isNaN(averageRating)){%>
           <%=averageRating = "No Reviews Yet"%><br>
     <% }else{%>
-        <%=averageRating%><br>
+          <div class="star-ratings-sprite"><span style="width:<%=averageRating%>%" class="star-ratings-sprite-rating"></span></div><br>
     <% }%>
           <%= show.title %></h4>
           <p class="card-text" name="description"><%= show.description %></p>
@@ -57,17 +57,27 @@
           <%show.reviews.forEach((reviews)=>{%>
           <li class="list-group-item">
             Rating:<%=reviews.rating%><br>
-            <%=reviews.body%>  
+            <%=reviews.body%>
           </li>
           <% })%>
         </ul>
         <div class="card-body">
           <% if (logged) { %>
           <form action="/tv/create" method="POST">
-                            <input type="hidden" name="titleId" value="<%=show._id%>">
-            Create a review:<textarea name="body"></textarea><br>
-                            <input type="number" name="rating" max='10' min='1'>
-                            <button type="submit">Submit</button>
+            <div class='container-stars' id='rating-stars'>
+             <fieldset class="rating">
+            <legend>Please rate:</legend>
+              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+            </fieldset>
+          </div>
+              <input type="hidden" name="titleId" value="<%=show._id%>">
+              <textarea name="body">Create a review</textarea><br>
+              <!-- <input type="number" name="rating" max='10' min='1'> -->
+              <button type="submit">Submit</button>
         </form>
           <a href="/tv/<%= show._id %>/edit" >Update</a><br>
           <a href="/tv/<%= show._id %>?_method=DELETE"" >Delete</a><br>
