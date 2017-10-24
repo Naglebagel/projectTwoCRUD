@@ -33,16 +33,16 @@
 </nav>
 	</header>
 
-	<main>
-		<section class="d-flex justify-content-center">
+  <main>
+    <section class="d-flex justify-content-center">
       <div class="card border-dark bg-secondary" style="width: 25rem;">
         <img class="card-img-top" name="imageLink" src="<%= movie.imageLink %>" alt="Card image cap">
         <div class="card-block">
           <video
           id="vid1"
           class="video-js vjs-default-skin"
-           
-          data-setup='{ "width": auto, "height": 264, "controls": true, "autoplay": false, "preload": true, "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "<%= movie.videoLink %>"}], "youtube": { "ytControls": 0} }'
+          width="398" height="264"
+          data-setup='{ "controls": true, "autoplay": false, "preload": true, "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "<%= movie.videoLink %>"}], "youtube": { "ytControls": 0} }'
 
           >
           </video>
