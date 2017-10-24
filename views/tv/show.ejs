@@ -37,6 +37,16 @@
 		<section class="d-flex justify-content-center">
       <div class="card border-dark bg-secondary" style="width: 25rem;">
         <img class="card-img-top" name="imageLink" src="<%= show.imageLink %>" alt="Card image cap">
+        <div class="card-block">
+          <video
+          id="vid1"
+          class="video-js vjs-default-skin"
+          width="398" height="264"
+          data-setup='{ "controls": true, "autoplay": false, "preload": true, "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "<%= show.videoLink %>"}], "youtube": { "ytControls": 0} }'
+
+          >
+          </video>
+        </div>
         <div class="card-body">
           <h4 class="card-title" name="title">
     <%       let totalRatings = 0;%>

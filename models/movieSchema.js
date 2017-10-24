@@ -5,6 +5,7 @@ const movieSchema = new mongoose.Schema({
 
 	title: String,
 	imageLink: String,
+	videoLink: String,
 	description: String,
 	reviews: [MovieReview.schema]
 
