@@ -6,35 +6,35 @@
 <body>
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Create an Account</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link icon" href="/">Home <span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link icon" href="/movie">Movie Reviews</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link icon" href="/tv">TV Reviews</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link icon" href="/account">Create Account</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link icon" href="/">Login</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-	</header>
+      <a class="navbar-brand" href="#">Create an Account</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link icon" href="/">Home <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link icon" href="/movie">Movie Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link icon" href="/tv">TV Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link icon" href="/account">Create Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link icon" href="/">Login</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
+</header>
 
-	 <main>
-    <section>
-      <div class="container">
+<main>
+  <section>
+    <div class="container">
       <form class="form-signin" action="/account" method="POST">
         <h1><%=message%></h1>
         <h2 class="form-signin-heading">Create an Account</h2>
@@ -44,13 +44,13 @@
         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
         <button class="btn btn-lg btn-dark btn-block type" type="submit">Submit</button>
       </form>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-	<canvas id="canvas-radial"></canvas>
+<canvas id="canvas-radial"></canvas>
 
 
-	<script src="/javascripts/app.js"></script>
+<script src="/javascripts/app.js"></script>
 </body>
 </html>

@@ -6,59 +6,59 @@
 <body>
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Login</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link icon" href="/">Home <span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link icon" href="/movie">Movie Reviews</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link icon" href="/tv">TV Reviews</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link icon" href="/account">Create Account</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link icon" href="/login">Login</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-	</header>
+      <a class="navbar-brand" href="#">Login</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link icon" href="/">Home <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link icon" href="/movie">Movie Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link icon" href="/tv">TV Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link icon" href="/account">Create Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link icon" href="/login">Login</a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+</header>
 
-	<main>
-		<section>
-      <div class="container">
+<main>
+	<section>
+    <div class="container">
        <% if (!logged) { %>
        <h1><%=message%></h1>
-			<form class="form-signin" action="/login" method="post">
-        <h2 class="form-signin-heading">Login</h2>
-        <label for="username" class="sr-only">Username</label>
-				<input placeholder="Username" class="form-control" id="username" type="text" name="username" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-				<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-				<button class="btn btn-lg btn-dark btn-block type" type="submit">Login</button>
-			</form>
-     <% } %>
+			   <form class="form-signin" action="/login" method="post">
+          <h2 class="form-signin-heading">Login</h2>
+            <label for="username" class="sr-only">Username</label>
+				    <input placeholder="Username" class="form-control" id="username" type="text" name="username" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+				    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+				    <button class="btn btn-lg btn-dark btn-block type" type="submit">Login</button>
+			   </form>
+      <% } %>
 
-    <% if (logged) { %>
-      <h2>You are currently logged in</h2>
-      <a href="/logout">Logout</a>
-    <% } %>
+      <% if (logged) { %>
+        <h2>You are currently logged in</h2>
+          <a href="/logout">Logout</a>
+      <% } %>
 
-      </div>
-		</section>
-	</main>
+    </div>
+	</section>
+</main>
 
-	<canvas id="canvas-radial"></canvas>
+<canvas id="canvas-radial"></canvas>
 
 
-	<script src="/javascripts/app.js"></script>
+<script src="/javascripts/app.js"></script>
 </body>
 </html>

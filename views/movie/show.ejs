@@ -49,21 +49,21 @@
         </div>
         <div class="card-body">
           <h4 class="card-title" name="title">
-    <%       let totalRatings = 0;%>
-    <%   for (let i=0; i < movie.reviews.length; i++) {%>
+    <% let totalRatings = 0;%>
+    <%  for (let i=0; i < movie.reviews.length; i++) {%>
     <%    totalRatings += movie.reviews[i].rating%>
     <%   }%>
-    <% let starRating = Math.round(totalRatings/ movie.reviews.length*5)/5%>
-    <% let averageRating = Math.round((totalRatings/ movie.reviews.length*2)*100)/10%>
-    <% if(isNaN(averageRating)){%>
-          <%=averageRating = "No Reviews Yet"%><br>
-    <% }else{%>
-          <%=starRating%>/5<br>
-          <div class="star-ratings-sprite"><span style="width:<%=averageRating%>%" class="star-ratings-sprite-rating"></span></div><br>
-    <% }%>
-          <h4><%= movie.title %></h4>
-          <p class="card-text" name="description"><%= movie.description %></p>
-        </div>
+    <%    let starRating = Math.round(totalRatings/ movie.reviews.length*5)/5%>
+    <%    let averageRating = Math.round((totalRatings/ movie.reviews.length*2)*100)/10%>
+    <%    if(isNaN(averageRating)){%>
+            <%=averageRating = "No Reviews Yet"%><br>
+    <%    }else{%>
+            <%=starRating%>/5<br>
+              <div class="star-ratings-sprite"><span style="width:<%=averageRating%>%" class="star-ratings-sprite-rating"></span></div><br>
+    <%    }%>
+            <h4><%= movie.title %></h4>
+              <p class="card-text" name="description"><%= movie.description %></p>
+                </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Reviews</li>
           <%movie.reviews.forEach((reviews)=>{%>
@@ -71,16 +71,16 @@
             <%let userReviewRating = ((reviews.rating*2)*100)/10%> %>
             <div class="star-ratings-sprite"><span style="width:<%=userReviewRating%>%" class="star-ratings-sprite-rating"></span></div><br>
             <%=reviews.body%>
+            Reviewed by:<%=reviews.username%><br>
           </li>
           <% })%>
         </ul>
         <div class="card-body">
           <% if (logged) { %>
-
           <form action="/movie/create" method="POST">
             <div class='container-stars' id='rating-stars'>
              <fieldset class="rating">
-            <legend>Please rate:</legend>
+              <legend>Please rate:</legend>
               <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
               <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
               <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
@@ -90,7 +90,7 @@
           </div>
               <input type="hidden" name="titleId" value="<%=movie._id%>">
               <textarea name="body">Create a review</textarea><br>
-              <!-- <input type="number" name="rating" max='10' min='1'> -->
+              <input type="hidden" name="username" value="<%=usernameReview%>">
               <button type="submit">Submit</button>
         </form>
           <a href="/movie/<%= movie._id %>/edit" >Update</a><br>
