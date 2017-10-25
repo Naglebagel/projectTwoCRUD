@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const TV = require('../models/tvSchema')
 const TVReview = require('../models/tvReviews')
-
+const User = require('../models/user')
 
 
 router.get('/', (req, res) =>{
@@ -34,16 +34,11 @@ router.get('/:id', (req,res) =>{
 			res.render('tv/show', {
 										show: show,
 										TVReview,
-										logged: req.session.logged
-		})
-// 			let totalRatings = 0;
-// 			for (let i=0; i < show.reviews.length; i++) {
-//         totalRatings += show.reviews[i].rating
-        
-        
-// }
-//  const averageRating = totalRatings/ show.reviews.length
-// console.log(averageRating)
+										logged: req.session.logged,
+										usernameReview: req.session.username,
+										User
+
+		})	
 	})
 })
 
