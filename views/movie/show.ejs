@@ -68,7 +68,8 @@
           <li class="list-group-item">Reviews</li>
           <%movie.reviews.forEach((reviews)=>{%>
           <li class="list-group-item">
-            Rating:<%=reviews.rating%><br>
+            <%let userReviewRating = ((reviews.rating*2)*100)/10%> %>
+            <div class="star-ratings-sprite"><span style="width:<%=userReviewRating%>%" class="star-ratings-sprite-rating"></span></div><br>
             <%=reviews.body%>
           </li>
           <% })%>

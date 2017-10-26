@@ -42,7 +42,7 @@ router.post('/account', (req, res) => {
 				})
 
 			} else {
-				res.render('newaccount', {message: 'username taken'})
+				res.render('newaccount', {message: 'Username is taken, please try again'})
 			}
 		}
 	})
@@ -53,7 +53,7 @@ router.post('/login', (req, res) =>{
 
 	User.findOne({username: req.body.username}, (err, user) => {
     if(err){
-      res.send(err)
+      res.redirect('/login')
     } else {
       console.log(user)
             if(user){
@@ -63,11 +63,12 @@ router.post('/login', (req, res) =>{
                       req.session.username = user.username;
                       res.redirect('/login')
                     } else {
-                      res.render('login', {message: 'login incorrect'})
+                      res.render('login', {	logged: req.session.logged})
                     }
 
             } else {
-              res.render('login', {message: 'Login was incorrect'})
+              res.render('login', {	logged: req.session.logged,
+              						message: 'login incorrect'})
             }
    		}
    	})

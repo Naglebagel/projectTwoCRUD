@@ -36,6 +36,7 @@
 		<section>
       <div class="container">
        <% if (!logged) { %>
+       <h1><%=message%></h1>
 			<form class="form-signin" action="/login" method="post">
         <h2 class="form-signin-heading">Login</h2>
         <label for="username" class="sr-only">Username</label>
