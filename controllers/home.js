@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 }) //end of homepage get route	
 
 router.get('/login', (req, res) => {
-	res.render('login', {message: '', logged: req.session.logged});
+	res.render('login', {message: '', logged: req.session.logged, username: req.session.username});
 }) // end of login get route
 
 router.get('/account', (req, res) => {

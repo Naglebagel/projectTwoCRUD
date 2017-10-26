@@ -48,8 +48,10 @@
       <% } %>
 
       <% if (logged) { %>
-        <h2>You are currently logged in</h2>
-          <a href="/logout">Logout</a>
+        <h2 class="blink_me">You are currently logged in as <%= username %></h2>
+        <button class="btn btn-lg btn-dark btn-block type" type="submit"><a href="/movie">Movie Reviews</a></button>
+        <button class="btn btn-lg btn-dark btn-block type" type="submit"><a href="/tv">TV Reviews</a></button>
+        <button class="btn btn-lg btn-dark btn-block type" type="submit"><a href="/logout">Logout</a></button>
       <% } %>
 
     </div>

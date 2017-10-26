@@ -14,7 +14,7 @@ ul {
   list-style-type: none;
 }
 a {
-  color: maroon;
+  color: blanchedalmond;
 }
 a:link {
   text-decoration: none!important;
@@ -115,4 +115,42 @@ a:link {
   position: relative;
   top: 2px;
   left: 2px;
+}
+.blink_me {
+  animation: blinker 10s infinite;
+}
+@keyframes blinker {
+  0% {
+    color: red;
+  }
+  10% {
+    color: yellow;
+  }
+  20% {
+    color: blue;
+  }
+  30% {
+    color: purple;
+  }
+  40% {
+    color: steelblue;
+  }
+  50% {
+    color: teal;
+  }
+  60% {
+    color: pink;
+  }
+  70% {
+    color: blanchedalmond;
+  }
+  80% {
+    color: orange;
+  }
+  90% {
+    color: brown;
+  }
+  100% {
+    color: green;
+  }
 }
