@@ -9,16 +9,17 @@ router.get('/', (req, res) =>{
 		res.render('movie/index', {movie: movies,
 								moviereviews: reviews,
 								logged: req.session.logged
-									})
-	})
+			})
+		})
 	})
 })
 
 router.post('/', (req,res) =>{
 		Movie.create(req.body, (err, movie)=>{
 			res.redirect('/movie')
-		})
 	})
+})
+
 router.get('/new', (req, res) =>{
 	if (req.session.logged === true) {
 		res.render('movie/new', {});
@@ -31,9 +32,9 @@ router.get('/:id', (req,res) =>{
 	Movie.findById((req.params.id), (err, movie)=>{
 			res.render('movie/show', {
 										movie: movie,
-										MovieReview,
-										logged: req.session.logged
-										})
+										logged: req.session.logged,
+										usernameReview: req.session.username,
+		})
 	})
 })
 
@@ -51,10 +52,10 @@ router.put('/:id/edit', (req, res) => {
 	console.log(req.params.id)
 	Movie.findByIdAndUpdate(req.params.id, req.body, (err, movie) => {
 		if(err){
-				res.send('error updating author');
-			} else{
-				res.redirect('/movie');
-			};
+			res.send('error updating author');
+		} else{
+			res.redirect('/movie');
+		};
 	}); // end of mongo query
 });
 
@@ -68,17 +69,28 @@ router.post('/create', (req, res)=>{
 	}))
 })
 
+router.delete("/delete/:id", (req, res)=>{
+		MovieReview.findByIdAndRemove(req.params.id, (err, review)=>{
+		Movie.findOne({'reviews._id': req.params.id}, (err, foundMovie) =>{
+			foundMovie.reviews.id(req.params.id).remove();
+			foundMovie.save((err, data)=>{
+				res.redirect('/movie/'+ req.body.titleId);
+			})
+		})
+	})
+})
+
 router.delete('/:id', (req, res) => {
 	if (req.session.logged === true) {
 		Movie.findByIdAndRemove(req.params.id, (err, movie) => {
-		const reviewIds = [];
-		for(let i = 0; i < movie.reviews.length; i++){
-			reviewIds.push(movie.reviews[i].id)
-		}
-		MovieReview.remove({
-			_id: {$in: reviewIds}
-		}, (err, data) =>{
-			res.redirect('/movie')
+			const reviewIds = [];
+				for(let i = 0; i < movie.reviews.length; i++){
+					reviewIds.push(movie.reviews[i].id)
+			}
+				MovieReview.remove({
+					_id: {$in: reviewIds}
+			}, (err, data) =>{
+				res.redirect('/movie')
 
 			})
 		})
@@ -86,4 +98,5 @@ router.delete('/:id', (req, res) => {
 		res.redirect('/login')
 	}	
 })
+
 module.exports = router;

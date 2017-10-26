@@ -4,7 +4,8 @@ const TV = require('./tvSchema')
 const TVReviewSchema = new mongoose.Schema({
 	titleId: String,
 	rating: Number,
-	body: String
+	body: String,
+	username: String
 	
 })
 
