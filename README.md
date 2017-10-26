@@ -7,7 +7,11 @@ How to Install:
 If you have locally cloned/downloaded/forked this app, please run npm install to get all the modules.
 
 About:
-This is Andrew Nagle and Daniel Kim's CRUD App.  We created this together.  
+This is Andrew Nagle and Daniel Kim's CRUD App.  We created this together.
+
+Wireframe/UserStory:  
+
+![alt text](https://github.com/Naglebagel/projectTwoCRUD/blob/master/public/images/wireframeuserstory.png "Wireframe/User Story")
 
 If you haven't created an account or haven't logged in, you can still look at all the reviews that other people have created already by navigating to the top of the page.  If there is a television show or a movie that you don't see on our review app, you can create an account and log in to create a new thread for that movie or show.
 
