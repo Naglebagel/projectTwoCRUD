@@ -69,6 +69,17 @@ router.post('/create', (req, res)=>{
 	}))
 })
 
+router.delete("/delete/:id", (req, res)=>{
+		MovieReview.findByIdAndRemove(req.params.id, (err, review)=>{
+		Movie.findOne({'reviews._id': req.params.id}, (err, foundMovie) =>{
+			foundMovie.reviews.id(req.params.id).remove();
+			foundMovie.save((err, data)=>{
+				res.redirect('/movie/'+ req.body.titleId);
+			})
+		})
+	})
+})
+
 router.delete('/:id', (req, res) => {
 	if (req.session.logged === true) {
 		Movie.findByIdAndRemove(req.params.id, (err, movie) => {

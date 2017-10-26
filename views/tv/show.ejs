@@ -70,6 +70,19 @@
               <div class="star-ratings-sprite"><span style="width:<%=userReviewRating%>%" class="star-ratings-sprite-rating"></span></div><br>
                 <%=reviews.body%><br>
                 Reviewed by:<%=reviews.username%><br>
+                  <% if (logged) { %>
+                    <%if(reviews.username === usernameReview){%> 
+                      <form action="/tv/delete/<%=reviews._id%>?_method=DELETE" method="POST">
+                        <input type="hidden" name="titleId" value="<%=reviews.titleId%>">
+                        <input type="hidden" name="reviewId" value="<%=reviews._id%>">
+                        <input type="submit" value="Delete Review">
+                      </form>
+                    <% }else{%>
+                      Sorry you can't delete this review
+                    <% }%>
+                    <% }else{%>
+                      Sorry you can't delete this review
+                    <% }%>
           </li>
           <% })%>
         </ul>

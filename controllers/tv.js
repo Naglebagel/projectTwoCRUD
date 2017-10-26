@@ -72,6 +72,17 @@ router.post('/create', (req, res)=>{
 	}))
 })
 
+router.delete("/delete/:id", (req, res)=>{
+		TVReview.findByIdAndRemove(req.params.id, (err, review)=>{
+		TV.findOne({'reviews._id': req.params.id}, (err, foundShow) =>{
+			foundShow.reviews.id(req.params.id).remove();
+			foundShow.save((err, data)=>{
+				res.redirect('/tv/'+ req.body.titleId);
+			})
+		})
+	})
+})
+
 router.delete('/:id', (req, res) => {
 	if (req.session.logged === true){
 		TV.findByIdAndRemove(req.params.id, (err, show) => {
@@ -92,7 +103,5 @@ router.delete('/:id', (req, res) => {
 
 
 
-
- 
 
 module.exports = router;
