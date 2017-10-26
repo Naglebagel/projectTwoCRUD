@@ -11,6 +11,14 @@ This is Andrew Nagle and Daniel Kim's CRUD App.  We created this together.
 
 If you haven't created an account or haven't logged in, you can still look at all the reviews that other people have created already by navigating to the top of the page.  If there is a television show or a movie that you don't see on our review app, you can create an account and log in to create a new thread for that movie or show.
 
+![alt text](https://github.com/Naglebagel/projectTwoCRUD/blob/master/public/images/home.png "Home Page")
+
+![alt text](https://github.com/Naglebagel/projectTwoCRUD/blob/master/public/images/createaccount.png "Create Account Page")
+
+![alt text](https://github.com/Naglebagel/projectTwoCRUD/blob/master/public/images/login.png "Login Page")
+
+![alt text](https://github.com/Naglebagel/projectTwoCRUD/blob/master/public/images/signedin.png "Signed In Page")
+
 We added some great features like a star rating and you can also add a youtube clip that has to do with your show or movie.  This is a great tool because it can give other viewers a glimpse of what your movie or show could be like. Another great feature we allowed was to allow viewers to modify or edit the details of the movie or the show that may better describe or fit the movie or show.  
 
 Technologies:
