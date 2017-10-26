@@ -36,6 +36,9 @@
   <main>
     <section class="d-flex justify-content-center">
       <div class="card border-dark bg-secondary" style="width: 25rem;">
+        <div class="card-block">
+          <h1><%= movie.title %></h1>
+        </div>
         <img class="card-img-top" name="imageLink" src="<%= movie.imageLink %>" alt="Card image cap">
         <div class="card-block">
           <video
@@ -61,7 +64,7 @@
             <%=starRating%>/5<br>
               <div class="star-ratings-sprite"><span style="width:<%=averageRating%>%" class="star-ratings-sprite-rating"></span></div><br>
     <%    }%>
-            <h4><%= movie.title %></h4>
+            <%= movie.title %></h4>
               <p class="card-text" name="description"><%= movie.description %></p>
                 </div>
         <ul class="list-group list-group-flush">
