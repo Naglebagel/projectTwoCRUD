@@ -76,13 +76,13 @@ router.delete('/:id', (req, res) => {
 	if (req.session.logged === true){
 		TV.findByIdAndRemove(req.params.id, (err, show) => {
 			const reviewIds = [];
-			for(let i = 0; i < show.reviews.length; i++){
-			reviewIds.push(show.reviews[i].id)
-		}
-			TVReview.remove({
-				_id: {$in: reviewIds}
-		}, (err, data) =>{
-			res.redirect('/tv')
+				for(let i = 0; i < show.reviews.length; i++){
+				reviewIds.push(show.reviews[i].id)
+			}
+				TVReview.remove({
+					_id: {$in: reviewIds}
+			}, (err, data) =>{
+				res.redirect('/tv')
 			})
 		})
 	}else{
